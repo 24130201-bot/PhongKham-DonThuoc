@@ -1,0 +1,12 @@
+E:\PhongKham-DonThuoc\PhongKham.DTO\bin\Debug\net8.0\PhongKham.DTO.deps.json
+E:\PhongKham-DonThuoc\PhongKham.DTO\bin\Debug\net8.0\PhongKham.DTO.dll
+E:\PhongKham-DonThuoc\PhongKham.DTO\bin\Debug\net8.0\PhongKham.DTO.pdb
+E:\PhongKham-DonThuoc\PhongKham.DTO\obj\Debug\net8.0\PhongKham.DTO.GeneratedMSBuildEditorConfig.editorconfig
+E:\PhongKham-DonThuoc\PhongKham.DTO\obj\Debug\net8.0\PhongKham.DTO.AssemblyInfoInputs.cache
+E:\PhongKham-DonThuoc\PhongKham.DTO\obj\Debug\net8.0\PhongKham.DTO.AssemblyInfo.cs
+E:\PhongKham-DonThuoc\PhongKham.DTO\obj\Debug\net8.0\PhongKham.DTO.csproj.CoreCompileInputs.cache
+E:\PhongKham-DonThuoc\PhongKham.DTO\obj\Debug\net8.0\PhongKham.DTO.sourcelink.json
+E:\PhongKham-DonThuoc\PhongKham.DTO\obj\Debug\net8.0\PhongKham.DTO.dll
+E:\PhongKham-DonThuoc\PhongKham.DTO\obj\Debug\net8.0\refint\PhongKham.DTO.dll
+E:\PhongKham-DonThuoc\PhongKham.DTO\obj\Debug\net8.0\PhongKham.DTO.pdb
+E:\PhongKham-DonThuoc\PhongKham.DTO\obj\Debug\net8.0\ref\PhongKham.DTO.dll

@@ -1,0 +1,16 @@
+E:\PhongKham-DonThuoc\PhongKham.DAL\bin\Debug\net8.0\PhongKham.DAL.deps.json
+E:\PhongKham-DonThuoc\PhongKham.DAL\bin\Debug\net8.0\PhongKham.DAL.dll
+E:\PhongKham-DonThuoc\PhongKham.DAL\bin\Debug\net8.0\PhongKham.DAL.pdb
+E:\PhongKham-DonThuoc\PhongKham.DAL\bin\Debug\net8.0\PhongKham.DTO.dll
+E:\PhongKham-DonThuoc\PhongKham.DAL\bin\Debug\net8.0\PhongKham.DTO.pdb
+E:\PhongKham-DonThuoc\PhongKham.DAL\obj\Debug\net8.0\PhongKham.DAL.csproj.AssemblyReference.cache
+E:\PhongKham-DonThuoc\PhongKham.DAL\obj\Debug\net8.0\PhongKham.DAL.GeneratedMSBuildEditorConfig.editorconfig
+E:\PhongKham-DonThuoc\PhongKham.DAL\obj\Debug\net8.0\PhongKham.DAL.AssemblyInfoInputs.cache
+E:\PhongKham-DonThuoc\PhongKham.DAL\obj\Debug\net8.0\PhongKham.DAL.AssemblyInfo.cs
+E:\PhongKham-DonThuoc\PhongKham.DAL\obj\Debug\net8.0\PhongKham.DAL.csproj.CoreCompileInputs.cache
+E:\PhongKham-DonThuoc\PhongKham.DAL\obj\Debug\net8.0\PhongKham.DAL.sourcelink.json
+E:\PhongKham-DonThuoc\PhongKham.DAL\obj\Debug\net8.0\PhongKha.0D636A5E.Up2Date
+E:\PhongKham-DonThuoc\PhongKham.DAL\obj\Debug\net8.0\PhongKham.DAL.dll
+E:\PhongKham-DonThuoc\PhongKham.DAL\obj\Debug\net8.0\refint\PhongKham.DAL.dll
+E:\PhongKham-DonThuoc\PhongKham.DAL\obj\Debug\net8.0\PhongKham.DAL.pdb
+E:\PhongKham-DonThuoc\PhongKham.DAL\obj\Debug\net8.0\ref\PhongKham.DAL.dll
