@@ -1,0 +1,307 @@
+BEGIN TRANSACTION;
+CREATE TABLE IF NOT EXISTS "BenhNhan" (
+	"MaBN"	INTEGER UNIQUE,
+	"HoTen"	TEXT NOT NULL,
+	"NgaySinh"	TEXT NOT NULL,
+	"GioiTinh"	TEXT NOT NULL CHECK("GioiTinh" IN ('Nam', 'Nữ')),
+	"SDT"	TEXT NOT NULL,
+	"DiaChi"	TEXT NOT NULL,
+	"TienSuDiUng"	TEXT NOT NULL DEFAULT '',
+	"CCCD"	TEXT NOT NULL DEFAULT '',
+	"SoBHYT"	TEXT NOT NULL DEFAULT '',
+	"NguoiThan"	TEXT NOT NULL DEFAULT '',
+	"SDTNguoiThan"	TEXT NOT NULL DEFAULT '',
+	PRIMARY KEY("MaBN" AUTOINCREMENT)
+);
+CREATE TABLE IF NOT EXISTS "CaThu" (
+	"MaCa"	INTEGER,
+	"MaThuNgan"	INTEGER NOT NULL,
+	"GioMo"	TEXT NOT NULL,
+	"GioDong"	TEXT,
+	"TienDauCa"	INTEGER NOT NULL DEFAULT 0,
+	"ThuTienMat"	INTEGER NOT NULL DEFAULT 0,
+	"ThuChuyenKhoan"	INTEGER NOT NULL DEFAULT 0,
+	"ThuThe"	INTEGER NOT NULL DEFAULT 0,
+	"TongChi"	INTEGER NOT NULL DEFAULT 0,
+	"TienMatThucTe"	INTEGER NOT NULL DEFAULT 0,
+	"ChenhLech"	INTEGER NOT NULL DEFAULT 0,
+	"GiaiTrinh"	TEXT NOT NULL DEFAULT '',
+	"TrangThai"	TEXT NOT NULL DEFAULT 'DangMo' CHECK("TrangThai" IN ('DangMo', 'DaDong')),
+	PRIMARY KEY("MaCa" AUTOINCREMENT),
+	FOREIGN KEY("MaThuNgan") REFERENCES "NguoiDung"("MaND")
+);
+CREATE TABLE IF NOT EXISTS "CauHinh" (
+	"Khoa"	TEXT,
+	"GiaTri"	TEXT NOT NULL,
+	PRIMARY KEY("Khoa")
+);
+CREATE TABLE IF NOT EXISTS "ChiDinh" (
+	"MaCD"	INTEGER,
+	"MaPK"	INTEGER NOT NULL,
+	"MaDV"	INTEGER NOT NULL,
+	"DonGia"	INTEGER NOT NULL,
+	"TrangThai"	TEXT NOT NULL DEFAULT 'ChoThucHien' CHECK("TrangThai" IN ('ChoThucHien', 'DaCoKetQua')),
+	"KetQua"	TEXT NOT NULL DEFAULT '',
+	"ThoiGianCD"	TEXT NOT NULL,
+	"MaNguoiThucHien"	INTEGER,
+	"ThoiGianKQ"	TEXT,
+	PRIMARY KEY("MaCD" AUTOINCREMENT),
+	FOREIGN KEY("MaDV") REFERENCES "DichVu"("MaDV"),
+	FOREIGN KEY("MaNguoiThucHien") REFERENCES "NguoiDung"("MaND"),
+	FOREIGN KEY("MaPK") REFERENCES "PhieuKham"("MaPK") ON DELETE CASCADE
+);
+CREATE TABLE IF NOT EXISTS "ChiTietBanLe" (
+	"MaCTBL"	INTEGER,
+	"MaHDBL"	INTEGER NOT NULL,
+	"MaThuoc"	INTEGER NOT NULL,
+	"SoLuong"	INTEGER NOT NULL CHECK("SoLuong" > 0),
+	"DonGia"	INTEGER NOT NULL,
+	"ThanhTien"	INTEGER NOT NULL,
+	PRIMARY KEY("MaCTBL" AUTOINCREMENT),
+	FOREIGN KEY("MaHDBL") REFERENCES "HoaDonBanLe"("MaHDBL") ON DELETE CASCADE,
+	FOREIGN KEY("MaThuoc") REFERENCES "Thuoc"("MaThuoc")
+);
+CREATE TABLE IF NOT EXISTS "ChiTietDonThuoc" (
+	"MaCT"	INTEGER,
+	"MaPK"	INTEGER NOT NULL,
+	"MaThuoc"	INTEGER NOT NULL,
+	"Sang"	REAL NOT NULL DEFAULT 0,
+	"Trua"	REAL NOT NULL DEFAULT 0,
+	"Chieu"	REAL NOT NULL DEFAULT 0,
+	"Toi"	REAL NOT NULL DEFAULT 0,
+	"SoNgay"	INTEGER NOT NULL DEFAULT 1,
+	"SoLuong"	INTEGER NOT NULL CHECK("SoLuong" > 0),
+	"CachDung"	TEXT,
+	"DonGia"	INTEGER NOT NULL,
+	"ThanhTien"	INTEGER NOT NULL,
+	"CanhBaoDiUng"	INTEGER NOT NULL DEFAULT 0,
+	PRIMARY KEY("MaCT" AUTOINCREMENT),
+	FOREIGN KEY("MaPK") REFERENCES "PhieuKham"("MaPK") ON DELETE CASCADE,
+	FOREIGN KEY("MaThuoc") REFERENCES "Thuoc"("MaThuoc")
+);
+CREATE TABLE IF NOT EXISTS "ChiTietKiemKe" (
+	"MaCTKK"	INTEGER,
+	"MaKK"	INTEGER NOT NULL,
+	"MaLo"	INTEGER NOT NULL,
+	"TonSoSach"	INTEGER NOT NULL,
+	"TonThucTe"	INTEGER NOT NULL CHECK("TonThucTe" >= 0),
+	"ChenhLech"	INTEGER NOT NULL,
+	"LyDo"	TEXT NOT NULL DEFAULT '',
+	PRIMARY KEY("MaCTKK" AUTOINCREMENT),
+	FOREIGN KEY("MaKK") REFERENCES "KiemKe"("MaKK") ON DELETE CASCADE,
+	FOREIGN KEY("MaLo") REFERENCES "LoThuoc"("MaLo")
+);
+CREATE TABLE IF NOT EXISTS "DichVu" (
+	"MaDV"	INTEGER,
+	"TenDV"	TEXT NOT NULL,
+	"NhomDV"	TEXT NOT NULL,
+	"DonGia"	INTEGER NOT NULL CHECK("DonGia" >= 0),
+	"HoatDong"	INTEGER NOT NULL DEFAULT 1,
+	PRIMARY KEY("MaDV" AUTOINCREMENT)
+);
+CREATE TABLE IF NOT EXISTS "GiayTo" (
+	"MaGT"	INTEGER,
+	"MaPK"	INTEGER NOT NULL,
+	"LoaiGiay"	TEXT NOT NULL CHECK("LoaiGiay" IN ('NghiOm', 'ChuyenTuyen', 'TomTat')),
+	"TuNgay"	TEXT,
+	"DenNgay"	TEXT,
+	"NoiChuyen"	TEXT NOT NULL DEFAULT '',
+	"NoiDung"	TEXT NOT NULL DEFAULT '',
+	"NgayCap"	TEXT NOT NULL,
+	"MaBacSi"	INTEGER,
+	PRIMARY KEY("MaGT" AUTOINCREMENT),
+	FOREIGN KEY("MaBacSi") REFERENCES "NguoiDung"("MaND"),
+	FOREIGN KEY("MaPK") REFERENCES "PhieuKham"("MaPK")
+);
+CREATE TABLE IF NOT EXISTS "HoaDon" (
+	"MaHD"	INTEGER,
+	"MaPK"	INTEGER NOT NULL UNIQUE,
+	"TienKham"	INTEGER NOT NULL,
+	"TienThuoc"	INTEGER NOT NULL,
+	"TongTien"	INTEGER NOT NULL,
+	"NgayThu"	TEXT NOT NULL,
+	"MaThuNgan"	INTEGER,
+	"HinhThuc"	TEXT NOT NULL DEFAULT 'TienMat' CHECK("HinhThuc" IN ('TienMat', 'ChuyenKhoan', 'The')),
+	"TienCLS"	INTEGER NOT NULL DEFAULT 0,
+	"MaCa"	INTEGER,
+	PRIMARY KEY("MaHD" AUTOINCREMENT),
+	FOREIGN KEY("MaCa") REFERENCES "CaThu"("MaCa"),
+	FOREIGN KEY("MaPK") REFERENCES "PhieuKham"("MaPK"),
+	FOREIGN KEY("MaThuNgan") REFERENCES "NguoiDung"("MaND")
+);
+CREATE TABLE IF NOT EXISTS "HoaDonBanLe" (
+	"MaHDBL"	INTEGER,
+	"NgayBan"	TEXT NOT NULL,
+	"TenKhach"	TEXT NOT NULL DEFAULT 'Khách lẻ',
+	"SDT"	TEXT NOT NULL DEFAULT '',
+	"TongTien"	INTEGER NOT NULL,
+	"HinhThuc"	TEXT NOT NULL DEFAULT 'TienMat' CHECK("HinhThuc" IN ('TienMat', 'ChuyenKhoan', 'The')),
+	"MaDuocSi"	INTEGER,
+	PRIMARY KEY("MaHDBL" AUTOINCREMENT),
+	FOREIGN KEY("MaDuocSi") REFERENCES "NguoiDung"("MaND")
+);
+CREATE TABLE IF NOT EXISTS "ICD10" (
+	"MaICD"	TEXT,
+	"TenBenh"	TEXT NOT NULL,
+	PRIMARY KEY("MaICD")
+);
+CREATE TABLE IF NOT EXISTS "KiemKe" (
+	"MaKK"	INTEGER,
+	"NgayKiemKe"	TEXT NOT NULL,
+	"MaDuocSi"	INTEGER,
+	"GhiChu"	TEXT NOT NULL DEFAULT '',
+	PRIMARY KEY("MaKK" AUTOINCREMENT),
+	FOREIGN KEY("MaDuocSi") REFERENCES "NguoiDung"("MaND")
+);
+CREATE TABLE IF NOT EXISTS "LichHen" (
+	"MaLH"	INTEGER,
+	"MaBN"	INTEGER,
+	"HoTen"	TEXT NOT NULL,
+	"SDT"	TEXT NOT NULL,
+	"NgayHen"	TEXT NOT NULL,
+	"GioHen"	TEXT NOT NULL,
+	"MaBacSi"	INTEGER,
+	"LyDo"	TEXT NOT NULL DEFAULT '',
+	"KenhDat"	TEXT NOT NULL DEFAULT 'Điện thoại',
+	"TrangThai"	TEXT NOT NULL DEFAULT 'ChoXacNhan' CHECK("TrangThai" IN ('ChoXacNhan', 'DaXacNhan', 'DaDen', 'Huy')),
+	"GhiChu"	TEXT NOT NULL DEFAULT '',
+	"MaLeTan"	INTEGER,
+	"MaPK"	INTEGER,
+	PRIMARY KEY("MaLH" AUTOINCREMENT),
+	FOREIGN KEY("MaBN") REFERENCES "BenhNhan"("MaBN"),
+	FOREIGN KEY("MaBacSi") REFERENCES "NguoiDung"("MaND"),
+	FOREIGN KEY("MaLeTan") REFERENCES "NguoiDung"("MaND"),
+	FOREIGN KEY("MaPK") REFERENCES "PhieuKham"("MaPK")
+);
+CREATE TABLE IF NOT EXISTS "LoThuoc" (
+	"MaLo"	INTEGER,
+	"MaThuoc"	INTEGER NOT NULL,
+	"SoLo"	TEXT NOT NULL,
+	"HanSuDung"	TEXT NOT NULL,
+	"NgayNhap"	TEXT NOT NULL,
+	"SoLuongNhap"	INTEGER NOT NULL CHECK("SoLuongNhap" > 0),
+	"SoLuongTon"	INTEGER NOT NULL CHECK("SoLuongTon" >= 0),
+	"GiaNhap"	INTEGER NOT NULL DEFAULT 0,
+	PRIMARY KEY("MaLo" AUTOINCREMENT),
+	FOREIGN KEY("MaThuoc") REFERENCES "Thuoc"("MaThuoc")
+);
+CREATE TABLE IF NOT EXISTS "NguoiDung" (
+	"MaND"	INTEGER,
+	"TenDangNhap"	TEXT NOT NULL UNIQUE,
+	"MatKhauHash"	TEXT NOT NULL,
+	"HoTen"	TEXT NOT NULL,
+	"VaiTro"	TEXT NOT NULL CHECK("VaiTro" IN ('Admin', 'LeTan', 'DieuDuong', 'BacSi', 'ThuNgan', 'DuocSi')),
+	"HoatDong"	INTEGER NOT NULL DEFAULT 1,
+	PRIMARY KEY("MaND" AUTOINCREMENT)
+);
+CREATE TABLE IF NOT EXISTS "PhieuChi" (
+	"MaPC"	INTEGER,
+	"MaCa"	INTEGER NOT NULL,
+	"ThoiGian"	TEXT NOT NULL,
+	"NoiDung"	TEXT NOT NULL,
+	"NguoiNhan"	TEXT NOT NULL DEFAULT '',
+	"SoTien"	INTEGER NOT NULL CHECK("SoTien" > 0),
+	"MaThuNgan"	INTEGER,
+	PRIMARY KEY("MaPC" AUTOINCREMENT),
+	FOREIGN KEY("MaCa") REFERENCES "CaThu"("MaCa"),
+	FOREIGN KEY("MaThuNgan") REFERENCES "NguoiDung"("MaND")
+);
+CREATE TABLE IF NOT EXISTS "PhieuKham" (
+	"MaPK"	INTEGER,
+	"MaBN"	INTEGER NOT NULL,
+	"NgayKham"	TEXT NOT NULL,
+	"SoThuTu"	INTEGER NOT NULL,
+	"GioTiepNhan"	TEXT NOT NULL,
+	"TrangThai"	TEXT NOT NULL DEFAULT 'ChoKham' CHECK("TrangThai" IN ('ChoKham', 'DangKham', 'DaKham', 'DaThanhToan', 'DaXuatThuoc', 'Huy')),
+	"MaLeTan"	INTEGER,
+	"MaBacSi"	INTEGER,
+	"TrieuChung"	TEXT,
+	"ChanDoan"	TEXT,
+	"LoiDan"	TEXT,
+	"TienKham"	INTEGER NOT NULL DEFAULT 0,
+	"LyDoKham"	TEXT NOT NULL DEFAULT '',
+	"UuTien"	TEXT NOT NULL DEFAULT '',
+	"MaICD"	TEXT,
+	"NgayTaiKham"	TEXT,
+	PRIMARY KEY("MaPK" AUTOINCREMENT),
+	UNIQUE("NgayKham","SoThuTu"),
+	FOREIGN KEY("MaBN") REFERENCES "BenhNhan"("MaBN"),
+	FOREIGN KEY("MaBacSi") REFERENCES "NguoiDung"("MaND"),
+	FOREIGN KEY("MaICD") REFERENCES "ICD10"("MaICD"),
+	FOREIGN KEY("MaLeTan") REFERENCES "NguoiDung"("MaND")
+);
+CREATE TABLE IF NOT EXISTS "PhieuXuat" (
+	"MaPX"	INTEGER,
+	"MaPK"	INTEGER NOT NULL,
+	"MaLo"	INTEGER NOT NULL,
+	"SoLuong"	INTEGER NOT NULL CHECK("SoLuong" > 0),
+	"NgayXuat"	TEXT NOT NULL,
+	"MaDuocSi"	INTEGER,
+	"MaHDBL"	INTEGER,
+	PRIMARY KEY("MaPX" AUTOINCREMENT),
+	FOREIGN KEY("MaDuocSi") REFERENCES "NguoiDung"("MaND"),
+	FOREIGN KEY("MaHDBL") REFERENCES "HoaDonBanLe"("MaHDBL"),
+	FOREIGN KEY("MaLo") REFERENCES "LoThuoc"("MaLo"),
+	FOREIGN KEY("MaPK") REFERENCES "PhieuKham"("MaPK")
+);
+CREATE TABLE IF NOT EXISTS "SinhHieu" (
+	"MaPK"	INTEGER NOT NULL,
+	"Mach"	INTEGER,
+	"HATamThu"	INTEGER,
+	"HATamTruong"	INTEGER,
+	"NhietDo"	REAL,
+	"NhipTho"	INTEGER,
+	"CanNang"	REAL,
+	"ChieuCao"	REAL,
+	"GhiChu"	TEXT,
+	"MaDieuDuong"	INTEGER,
+	PRIMARY KEY("MaPK")
+);
+CREATE TABLE IF NOT EXISTS "Thuoc" (
+	"MaThuoc"	INTEGER,
+	"TenThuoc"	TEXT NOT NULL,
+	"HoatChat"	TEXT,
+	"NhomThuoc"	TEXT,
+	"HamLuong"	TEXT,
+	"DonViTinh"	TEXT NOT NULL,
+	"DonGiaBan"	INTEGER NOT NULL CHECK("DonGiaBan" >= 0),
+	"TonToiThieu"	INTEGER NOT NULL DEFAULT 20,
+	"HoatDong"	INTEGER NOT NULL DEFAULT 1,
+	"CanKeDon"	INTEGER NOT NULL DEFAULT 1,
+	PRIMARY KEY("MaThuoc" AUTOINCREMENT)
+);
+CREATE VIEW v_TonKho AS
+SELECT  t.MaThuoc, t.TenThuoc, t.HoatChat, t.NhomThuoc, t.HamLuong, t.DonViTinh,
+        t.DonGiaBan, t.TonToiThieu, t.CanKeDon, t.HoatDong,
+        IFNULL((SELECT SUM(l.SoLuongTon) FROM LoThuoc l
+                WHERE l.MaThuoc = t.MaThuoc
+                  AND l.HanSuDung >= date('now','localtime')), 0) AS TonConHan,
+        IFNULL((SELECT SUM(c.SoLuong) FROM ChiTietDonThuoc c
+                JOIN PhieuKham p ON p.MaPK = c.MaPK
+                WHERE c.MaThuoc = t.MaThuoc
+                  AND p.TrangThai IN ('DaKham','DaThanhToan')), 0) AS DaKeChuaXuat
+FROM Thuoc t;
+CREATE INDEX IF NOT EXISTS "IX_BenhNhan_SDT" ON "BenhNhan" (
+	"SDT"
+);
+CREATE INDEX IF NOT EXISTS "IX_CTDT_PK" ON "ChiTietDonThuoc" (
+	"MaPK"
+);
+CREATE INDEX IF NOT EXISTS "IX_ChiDinh_PK" ON "ChiDinh" (
+	"MaPK"
+);
+CREATE INDEX IF NOT EXISTS "IX_LichHen_Ngay" ON "LichHen" (
+	"NgayHen"
+);
+CREATE INDEX IF NOT EXISTS "IX_LoThuoc_Thuoc" ON "LoThuoc" (
+	"MaThuoc",
+	"HanSuDung"
+);
+CREATE INDEX IF NOT EXISTS "IX_PhieuKham_BN" ON "PhieuKham" (
+	"MaBN"
+);
+CREATE INDEX IF NOT EXISTS "IX_PhieuKham_Ngay" ON "PhieuKham" (
+	"NgayKham",
+	"TrangThai"
+);
+COMMIT;
