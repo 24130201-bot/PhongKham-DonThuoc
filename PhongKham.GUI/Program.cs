@@ -18,7 +18,7 @@ internal static class Program
 
         using (var dangNhap = new frmDangNhap())
         {
-            if (dangNhap.showDiaLog() != DialogResult.OK) return;
+            if (dangNhap.ShowDialog() != DialogResult.OK) return;
             
 
         }

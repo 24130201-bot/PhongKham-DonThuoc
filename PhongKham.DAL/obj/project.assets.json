@@ -1,5 +1,5 @@
 {
-  "version": 3,
+  "version": 4,
   "targets": {
     "net8.0": {
       "Dapper/2.1.89": {
@@ -380,32 +380,34 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\pc\\.nuget\\packages\\": {}
+    "C:\\Users\\Admin\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\PhongKham-DonThuoc\\PhongKham.DAL\\PhongKham.DAL.csproj",
+      "projectUniqueName": "D:\\work.Eclipse\\Git\\PhongKham-DonThuoc\\PhongKham.DAL\\PhongKham.DAL.csproj",
       "projectName": "PhongKham.DAL",
-      "projectPath": "E:\\PhongKham-DonThuoc\\PhongKham.DAL\\PhongKham.DAL.csproj",
-      "packagesPath": "C:\\Users\\pc\\.nuget\\packages\\",
-      "outputPath": "E:\\PhongKham-DonThuoc\\PhongKham.DAL\\obj\\",
+      "projectPath": "D:\\work.Eclipse\\Git\\PhongKham-DonThuoc\\PhongKham.DAL\\PhongKham.DAL.csproj",
+      "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+      "outputPath": "D:\\work.Eclipse\\Git\\PhongKham-DonThuoc\\PhongKham.DAL\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\pc\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
       "sources": {
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net8.0": {
+          "framework": "net8.0",
           "targetAlias": "net8.0",
           "projectReferences": {
-            "E:\\PhongKham-DonThuoc\\PhongKham.DTO\\PhongKham.DTO.csproj": {
-              "projectPath": "E:\\PhongKham-DonThuoc\\PhongKham.DTO\\PhongKham.DTO.csproj"
+            "D:\\work.Eclipse\\Git\\PhongKham-DonThuoc\\PhongKham.DTO\\PhongKham.DTO.csproj": {
+              "projectPath": "D:\\work.Eclipse\\Git\\PhongKham-DonThuoc\\PhongKham.DTO\\PhongKham.DTO.csproj"
             }
           }
         }
@@ -419,10 +421,12 @@
         "enableAudit": "true",
         "auditLevel": "low",
         "auditMode": "direct"
-      }
+      },
+      "SdkAnalysisLevel": "10.0.400"
     },
     "frameworks": {
       "net8.0": {
+        "framework": "net8.0",
         "targetAlias": "net8.0",
         "dependencies": {
           "Dapper": {
@@ -445,12 +449,26 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[8.0.33, 8.0.33]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Ref",
+            "version": "[8.0.33, 8.0.33]"
+          },
+          {
+            "name": "Microsoft.WindowsDesktop.App.Ref",
+            "version": "[8.0.33, 8.0.33]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Users\\pc\\AppData\\Local\\Microsoft\\dotnet\\sdk\\8.0.422/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.403/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PhongKham.DTO")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ccc862552b0caad17546dded2f0608d49df564ee")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0ef03332fdb90c5e4b15ab57f9e3e8ca0fecb427")]
 [assembly: System.Reflection.AssemblyProductAttribute("PhongKham.DTO")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PhongKham.DTO")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
