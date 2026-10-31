@@ -1,16 +1,29 @@
+using PhongKham.BLL;
 namespace PhongKham.GUI;
 
-static class Program
+internal static class Program
 {
-    /// <summary>
-    ///  The main entry point for the application.
-    /// </summary>
+  
     [STAThread]
     static void Main()
     {
         // To customize application configuration such as set high DPI settings or default font,
         // see https://aka.ms/applicationconfiguration.
         ApplicationConfiguration.Initialize();
-        Application.Run(new Form1());
+        if (!File.Exists(TienIch.DuongDanCSDL))
+        {
+            MessageBox.Show("không tìm thấy file CSDL:\n" + TienIch.DuongDanCSDL, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return;
+        }
+
+        using (var dangNhap = new frmDangNhap())
+        {
+            if (dangNhap.showDiaLog() != DialogResult.OK) return;
+            
+
+        }
+
+        Application.Run(new frmMain());
+
     }    
 }

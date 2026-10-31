@@ -13,7 +13,7 @@ public partial class frmTrangChu : Form
         InitializeComponent();
         Load += frmTrangChu_Load;
         Activated += (s, e) => TaiSoLieu();
-        btnLamMoi.Click += (s, e)  => TaiSoLieu();
+        btnLamMoi.Click += (s, e) => TaiSoLieu();
 
         btnTiepNhan.Click += (s, e) => (MdiParent as frmMain)?.MoForm<frmTiepNhan>();
         btnKhamBenh.Click += (s, e) => (MdiParent as frmMain)?.MoForm<frmKhambenh>();
