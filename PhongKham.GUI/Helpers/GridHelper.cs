@@ -3,7 +3,7 @@ using System.Windows.Forms.VisualStyles;
 
 namespace PhongKham.GUI.Helpers;
 
-public class GridHelper
+public static class GridHelper
 {
     public static void CauHinh(DataGridView dgv)
     
@@ -22,7 +22,7 @@ public class GridHelper
         foreach (DataGridViewColumn c in dgv.Columns) c.Visible = false;
 
         int thuTu = 0;
-        foreach (var (Cot, tieuDe) in dsCot)
+        foreach (var (cot, tieuDe) in dsCot)
         {
             var c = dgv.Columns[cot];
             if (c == null) continue;
