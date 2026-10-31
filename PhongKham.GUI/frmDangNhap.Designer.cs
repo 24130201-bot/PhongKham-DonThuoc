@@ -61,7 +61,7 @@ partial class frmDangNhap
         lblTieuDe.ForeColor = System.Drawing.Color.White;
         lblTieuDe.Location = new System.Drawing.Point(0, 0);
         lblTieuDe.Name = "lblTieuDe";
-        lblTieuDe.Size = new System.Drawing.Size(800, 40);
+        lblTieuDe.Size = new System.Drawing.Size(800, 52);
         lblTieuDe.TabIndex = 1;
         lblTieuDe.Text = "ĐĂNG NHẬP HỆ THỐNG";
         lblTieuDe.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -73,10 +73,12 @@ partial class frmDangNhap
         lblPhuDe.ForeColor = System.Drawing.Color.FromArgb(((int)((byte)214)), ((int)((byte)238)), ((int)((byte)229)));
         lblPhuDe.Location = new System.Drawing.Point(0, 0);
         lblPhuDe.Name = "lblPhuDe";
+        lblPhuDe.Padding = new System.Windows.Forms.Padding(0, 0, 0, 10);
         lblPhuDe.Size = new System.Drawing.Size(800, 80);
         lblPhuDe.TabIndex = 2;
         lblPhuDe.Text = "Quản lý Phòng khám && Đơn thuốc";
-        lblPhuDe.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+        lblPhuDe.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+        lblPhuDe.Click += lblPhuDe_Click;
         // 
         // label1
         // 
