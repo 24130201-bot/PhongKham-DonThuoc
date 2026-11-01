@@ -1,4 +1,4 @@
-﻿using DefaultNamespace;
+﻿
 using PhongKham.BLL;
 using PhongKham.DTO;
 
@@ -25,7 +25,7 @@ public partial class frmTrangChu : Form
 
     private void frmTrangChu_Load(object? sender, EventArgs e)
     {
-        lblXinchao.text = $"Xin chào, {PhienDangNhap.NguoiDung?.HoTen}!";
+        lblXinchao.Text = $"Xin chào, {PhienDangNhap.NguoiDung?.HoTen}!";
         lblNgay.Text = "Hôm nay: " + DateTime.Today.ToString("dd/MM/yyyy", new System.Globalization.CultureInfo("Vi-VN"));
         TaiSoLieu();
         
